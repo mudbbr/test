@@ -1,93 +1,48 @@
 
-/*******   Global Libs and Overrides   */
-//@import '~@angular/material/_theming.scss'
-//@import '~@angular/material/prebuilt-themes/indigo-pink.css'
-//@import '~@angular/material/prebuilt-themes/pink-bluegrey.css'
-//@import '~@angular/material/prebuilt-themes/purple-green.css'
-//@import '~@angular/material/prebuilt-themes/deeppurple-amber.css'
-@import url("https://fonts.googleapis.com/css?family=Material+Icons")
-@import url("https://fonts.googleapis.com/css?family=Cabin:400,400i,700,700i")
-@import './material_icons'
+.material-icons
+  font-family 'Material Icons'
+  font-weight normal
+  font-style normal
+  font-size 24px  /* Preferred icon size */
+  display inline-block
+  line-height 1
+  text-transform none
+  letter-spacing normal
+  word-wrap normal
+  white-space nowrap
+  direction ltr
 
-/*
-@include mat-core()
-
-// define 3 theme color
-// mat-palette accepts $palette-name, main, lighter and darker variants
-$candy-app-primary
-  mat-palette($mat-indigo)
-$candy-app-accent
-  mat-palette($mat-pink, A200, A100, A400)
-$candy-app-warn
-  mat-palette($mat-red)
-$candy-app-theme
-  mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn)
-
-// Include the default theme styles.
-@include angular-material-theme($candy-app-theme)
-*/
-
-
-// create theme (use mat-dark-theme for themes with dark backgrounds)
-/* $my-theme mat-light-theme($my-theme-primary, $my-theme-accent, $my-theme-warn) */
-
-// specify theme class eg: <body class="my-theme"> ... </body>
-/*
-.my-theme
-  // use our theme with angular-material-theme mixin
-  @include angular-material-theme($my-theme)
-*/
-
-/*******   Component Overrides   */
-@import '../app/app.component'
-
-@import '../app/authorization/login/login.component'
-
-@import '../app/home/forms/manage-dynamic/manage-dynamic-conn-form.component'
-
-@import '../app/home/forms/create-dynamic/create-dynamic-conn-form.component'
-
-@import '../app/home/map/connection-info-window/connection-info-window.component.styl'
-
-@import '../app/home/home.component'
-@import '../app/home/formwizard/formwizard.component'
-@import '../app/home/forms/manage-ce-vlan/manage-ce-vlan-form.component'
-@import '../app/home/forms/manage-ce-vlan/dialog/create-ce-vlan-dialog.component'
-@import '../app/home/map/map.component'
-@import '../app/home/connection-list/connection-list.component'
-@import '../app/home/dialog/dialog-wizard.component'
-@import '../app/home/map/info-window-content/info-window-content.component'
-
-
-/*******   Common Mixins   */
-full-pane()
-  width 100%
-  height 100%
-
-
-/*******   Global Rules   */
-*
-  font-family 'Cabin', sans-serif
+  /* Support for all WebKit browsers. */
   -webkit-font-smoothing antialiased
+  /* Support for Safari and Chrome. */
+  text-rendering optimizeLegibility
+
+  /* Support for Firefox. */
   -moz-osx-font-smoothing grayscale
 
-html
-body
-  full-pane()
-  overflow hidden
-  margin 0
+  /* Support for IE. */
+  font-feature-settings 'liga'
 
-body
-  background rgb(150,200,255) url("../assets/img/background_login.png") no-repeat center center fixed
-  -webkit-background-size: cover
-  -moz-background-size: cover
-  -o-background-size: cover
-  background-size: cover
+  /* Rules for using icons as black on a light background. */
+  &.md-dark
+    color rgba(0, 0, 0, 0.54)
+  &.md-inactive
+    color rgba(0, 0, 0, 0.26)
 
+  /* Rules for using icons as white on a dark background. */
+  &.md-light
+    color rgba(255, 255, 255, 1)
+  &.md-light.md-inactive
+    color rgba(255, 255, 255, 0.3)
 
-router-outlet + *
-  full-pane()
+  /* Rules for sizing the icon. */
+  &.md-18
+    font-size 18px
+  &.md-24
+    font-size 24px
+  &.md-36
+    font-size 36px
+  &.md-48
+    font-size 48px
 
-textarea[disabled]
-  resize none
 
