@@ -1,73 +1,93 @@
-{
-  "extends": [
-    "tslint:recommended",
-    "tslint-config-prettier",
-    "tslint-eslint-rules"
-  ],
-  "linterOptions": {
-    "exclude": [
-      "app/**/*.js",
-      "node_modules/**/*.ts",
-      "node_modules/**/*.js",
-      "test/__mocks__/**/*.ts",
-      "test/__mocks__/**/*.js"
-    ]
-  },
-  "rules": {
-    "quotemark": [
-      true,
-      "double"
-    ],
-    "max-line-length": {
-      "options": [
-        180
-      ]
-    },
-    "max-classes-per-file": [true, 1, "exclude-class-expressions"],
-    "no-console": false,
-    "no-var-requires": false,
-    "ordered-imports": false,
-    "no-trailing-whitespace": false,
-    "object-literal-sort-keys": false,
-    "curly": [true, "ignore-same-line"],
-    "trailing-comma": [
-      true,
-      {
-        "multiline": {
-          "objects": "never",
-          "arrays": "never",
-          "functions": "never",
-          "typeLiterals": "ignore"
-        }
-      }
-    ],
-    "no-consecutive-blank-lines": true,
-    "ter-padded-blocks": [
-      true,
-      {
-        "blocks": "always",
-        "classes": "always",
-        "switches": "always"
-      }
-    ],
-    "arrow-parens":false,
-    "member-ordering": [
-      true,
-      {
-        "order": [
-          "public-static-field",
-          "public-instance-field",
-          "public-constructor",
-          "private-static-field",
-          "private-instance-field",
-          "private-constructor",
-          "public-instance-method",
-          "protected-instance-method",
-          "private-instance-method"
-        ],
-        "alphabetize": false
-      }
-    ]
-  },
-  "jsRules": {}
-}
+
+/*******   Global Libs and Overrides   */
+//@import '~@angular/material/_theming.scss'
+//@import '~@angular/material/prebuilt-themes/indigo-pink.css'
+//@import '~@angular/material/prebuilt-themes/pink-bluegrey.css'
+//@import '~@angular/material/prebuilt-themes/purple-green.css'
+//@import '~@angular/material/prebuilt-themes/deeppurple-amber.css'
+@import url("https://fonts.googleapis.com/css?family=Material+Icons")
+@import url("https://fonts.googleapis.com/css?family=Cabin:400,400i,700,700i")
+@import './material_icons'
+
+/*
+@include mat-core()
+
+// define 3 theme color
+// mat-palette accepts $palette-name, main, lighter and darker variants
+$candy-app-primary
+  mat-palette($mat-indigo)
+$candy-app-accent
+  mat-palette($mat-pink, A200, A100, A400)
+$candy-app-warn
+  mat-palette($mat-red)
+$candy-app-theme
+  mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn)
+
+// Include the default theme styles.
+@include angular-material-theme($candy-app-theme)
+*/
+
+
+// create theme (use mat-dark-theme for themes with dark backgrounds)
+/* $my-theme mat-light-theme($my-theme-primary, $my-theme-accent, $my-theme-warn) */
+
+// specify theme class eg: <body class="my-theme"> ... </body>
+/*
+.my-theme
+  // use our theme with angular-material-theme mixin
+  @include angular-material-theme($my-theme)
+*/
+
+/*******   Component Overrides   */
+@import '../app/app.component'
+
+@import '../app/authorization/login/login.component'
+
+@import '../app/home/forms/manage-dynamic/manage-dynamic-conn-form.component'
+
+@import '../app/home/forms/create-dynamic/create-dynamic-conn-form.component'
+
+@import '../app/home/map/connection-info-window/connection-info-window.component.styl'
+
+@import '../app/home/home.component'
+@import '../app/home/formwizard/formwizard.component'
+@import '../app/home/forms/manage-ce-vlan/manage-ce-vlan-form.component'
+@import '../app/home/forms/manage-ce-vlan/dialog/create-ce-vlan-dialog.component'
+@import '../app/home/map/map.component'
+@import '../app/home/connection-list/connection-list.component'
+@import '../app/home/dialog/dialog-wizard.component'
+@import '../app/home/map/info-window-content/info-window-content.component'
+
+
+/*******   Common Mixins   */
+full-pane()
+  width 100%
+  height 100%
+
+
+/*******   Global Rules   */
+*
+  font-family 'Cabin', sans-serif
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+
+html
+body
+  full-pane()
+  overflow hidden
+  margin 0
+
+body
+  background rgb(150,200,255) url("../assets/img/background_login.png") no-repeat center center fixed
+  -webkit-background-size: cover
+  -moz-background-size: cover
+  -o-background-size: cover
+  background-size: cover
+
+
+router-outlet + *
+  full-pane()
+
+textarea[disabled]
+  resize none
+
